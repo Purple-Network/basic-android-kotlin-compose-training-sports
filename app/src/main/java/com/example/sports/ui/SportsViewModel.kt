@@ -21,6 +21,7 @@ import com.example.sports.data.LocalSportsDataProvider
 import com.example.sports.model.Sport
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 /**
@@ -36,7 +37,7 @@ class SportsViewModel : ViewModel() {
             }
         )
     )
-    val uiState: StateFlow<SportsUiState> = _uiState
+    val uiState: StateFlow<SportsUiState> = _uiState.asStateFlow()
 
     fun updateCurrentSport(selectedSport: Sport) {
         _uiState.update {
